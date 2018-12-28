@@ -1,4 +1,4 @@
-let form = {
+var form = {
   name: {
     value: 'Masha',
     validationRules: {
@@ -18,7 +18,7 @@ let form = {
   },
 };
 
-let validator = {
+var validator = {
   rules: {
     required: (value) => !!value,
     minLength: (value, length) => value.length >= length,
@@ -29,13 +29,13 @@ let validator = {
   rulesPriority: ['required', 'minLength', 'maxLength', 'email'],
   validate(form) {
     return Object.keys(form).every((fieldName) => {
-      let valid = this.validateField(form[fieldName].value, form[fieldName].validationRules);
+      var valid = this.validateField(form[fieldName].value, form[fieldName].validationRules);
       if (!valid) console.log(form[fieldName].errorMessage);
       return valid;
     });
   },
   validateField(value, rules) {
-    let rulesList = this.rulesPriority.reduce((accumulator, currentRule) => {
+    var rulesList = this.rulesPriority.reduce((accumulator, currentRule) => {
       if (rules.hasOwnProperty(currentRule)) accumulator.push(currentRule);
       return accumulator;
     }, []);
