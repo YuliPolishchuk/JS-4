@@ -23,7 +23,6 @@ var validator = {
     required: (value) => !!value,
     minLength: (value, length) => value.length >= length,
     maxLength: (value, length) => value.length <= length,
-    // fast validation
     email: (value) => value.indexOf('@') !== -1 && value.indexOf('.') !== -1,
   },
   rulesPriority: ['required', 'minLength', 'maxLength', 'email'],
