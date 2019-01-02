@@ -1,3 +1,7 @@
+var numberCount = counter();
+console.log(numberCount.counts());
+console.log(numberCount.counts());
+
 function counter() {
   var count = 0;
   return {
@@ -7,5 +11,5 @@ function counter() {
     }
   }  
 }
-var numberCount = counter();
-console.log(numberCount.counts());
+
+
