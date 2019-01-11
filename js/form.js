@@ -9,10 +9,10 @@ var form = {
     errorMessage: 'invalid name',
   },
   email: {
-    value: 'email@example.com',
+    value: '',
     validationRules: {
       email: true,
-      required: true,
+      required: false,
     },
     errorMessage: 'invalid email',
   },
@@ -20,10 +20,10 @@ var form = {
 
 var validator = {
   rules: {
-    required: (value) => !!value,
+    required: (value, checkRequired) => !checkRequired || !!value,
     minLength: (value, length) => value.length >= length,
     maxLength: (value, length) => value.length <= length,
-    email: (value) => value.indexOf('@') !== -1 && value.indexOf('.') !== -1,
+    email: (value, checkRequired) => !checkRequired || (value.indexOf('@') !== -1 && value.indexOf('.') !== -1),
   },
   rulesPriority: ['required', 'minLength', 'maxLength', 'email'],
   validate(form) {
@@ -34,6 +34,8 @@ var validator = {
     });
   },
   validateField(value, rules) {
+  	if(rules.required === false && !value) return true;
+    
     var rulesList = this.rulesPriority.reduce((accumulator, currentRule) => {
       if (rules.hasOwnProperty(currentRule)) accumulator.push(currentRule);
       return accumulator;
