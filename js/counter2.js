@@ -5,7 +5,7 @@ console.log(numberCount.counts());
 function counter() {
   var count = 0;
   return {
-    counts : function() {
+    counts: function() {
       count++;
       return count;
     }
