@@ -12,5 +12,5 @@ function comparePassword(originalPass) {
     }
     return originalPass === userPass;
   }
-};
+}
 
