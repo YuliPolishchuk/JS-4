@@ -3,6 +3,6 @@ var chooseFood = function(food) {
     console.log('More please :)');
   } else {
     console.log('Some food please :)');
-  };
-}
+  }
+};
 chooseFood('cookies');
